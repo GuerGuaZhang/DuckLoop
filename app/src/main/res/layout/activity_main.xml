@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="4dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DuckLoop"
+        android:drawableLeft="@drawable/ic_logo_small"
+        android:drawablePadding="5dp"
+        android:drawableStart="@drawable/ic_logo_small"
+        android:textSize="20sp"
+        android:textColor="@color/accent"
+        android:textStyle="bold"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="循环播报器"
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginBottom="6dp" />
+
+    <!-- Music Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.4"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:contentPaddingTop="18dp"
+        app:contentPaddingBottom="12dp"
+        app:contentPaddingLeft="12dp"
+        app:contentPaddingRight="12dp"
+        app:cardBackgroundColor="@color/card_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎵 背景音乐"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvMusicCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0首"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnSelectMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="添加"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/accent"
+                    android:minWidth="0dp"
+                    android:paddingHorizontal="16dp"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnClearMusic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="清空"
+                    android:textSize="12sp"
+                    android:textColor="@color/error"
+                    android:backgroundTint="@color/background"
+                    android:minWidth="0dp"
+                    android:paddingHorizontal="16dp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvMusicFileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="未添加"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="8dp" />
+            </ScrollView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05" />
+
+    <!-- Announce Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:contentPaddingTop="16dp"
+        app:contentPaddingBottom="12dp"
+        app:contentPaddingLeft="12dp"
+        app:contentPaddingRight="12dp"
+        app:cardBackgroundColor="@color/card_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎙️ 播报音频"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvAnnounceCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0个"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnImportAnnounce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="添加"
+                    android:textSize="12sp"
+                    android:textColor="@color/accent"
+                    android:backgroundTint="@color/background"
+                    app:strokeColor="@color/accent"
+                    app:strokeWidth="1dp"
+                    android:minWidth="0dp"
+                    android:paddingHorizontal="16dp"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnClearAnnounce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="清空"
+                    android:textSize="12sp"
+                    android:textColor="@color/error"
+                    android:backgroundTint="@color/background"
+                    android:minWidth="0dp"
+                    android:paddingHorizontal="16dp"
+                    android:gravity="center"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvAnnounceFileName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="未添加"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="6dp" />
+            </ScrollView>
+
+            <Button
+                android:id="@+id/btnToggleRecord"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="录音作为播报"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:backgroundTint="@color/error"
+                app:icon="@drawable/ic_custom_logo"
+                app:iconGravity="textStart"
+                app:iconSize="16dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05" />
+
+    <!-- Parameters Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:contentPaddingTop="16dp"
+        app:contentPaddingBottom="12dp"
+        app:contentPaddingLeft="12dp"
+        app:contentPaddingRight="12dp"
+        app:cardBackgroundColor="@color/card_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="间隔时间"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvIntervalValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.0s"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_badge"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="2dp" />
+            </LinearLayout>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderInterval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="59"
+                android:value="3"
+                android:stepSize="1"
+                app:thumbColor="@color/accent"
+                app:thumbStrokeColor="@color/accent"
+                app:trackColorActive="@color/accent"
+                app:trackColorInactive="@color/semi_transparent"
+                android:layout_marginBottom="2dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="音乐压低"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDuckValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20%"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_badge"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="2dp" />
+            </LinearLayout>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderDuck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="16"
+                android:value="4"
+                android:stepSize="1"
+                app:thumbColor="@color/accent"
+                app:thumbStrokeColor="@color/accent"
+                app:trackColorActive="@color/accent"
+                app:trackColorInactive="@color/semi_transparent" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Gap -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05" />
+
+    <!-- Buttons row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnPreviewAnnounce"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="试听"
+            android:textSize="13sp"
+            android:textColor="@color/accent"
+            android:backgroundTint="@color/background"
+            app:strokeColor="@color/accent"
+            app:strokeWidth="1dp"
+            app:icon="@drawable/ic_custom_logo"
+            app:iconGravity="textStart"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="开始"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/accent"
+            app:icon="@drawable/ic_custom_logo"
+            app:iconGravity="textStart"
+            app:iconSize="16dp"
+            android:layout_marginEnd="4dp" />
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="停止"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/error"
+            app:icon="@drawable/ic_custom_logo"
+            app:iconGravity="textStart"
+            app:iconSize="16dp"
+            android:enabled="false" />
+    </LinearLayout>
+
+    <!-- Status Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:cardBackgroundColor="@color/card_bg"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="就绪"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
